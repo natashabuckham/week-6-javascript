@@ -9,10 +9,11 @@ describe('Weather class', () => {
   });
 
   it('fetches weather for a given city using the client', () => {
+    // in a unit test we create an entirely mocked client
     const mockClient = {
       fetchWeatherData: jest.fn() // a jest mock function
     };
-
+    // this sets up the mock response
     mockClient.fetchWeatherData.mockResolvedValueOnce({
       weather: [{main: 'Clouds'}], name: 'Bristol' // the structure of the json has to match the real one because the fetchWeatherData function is looking for data.weather[0].main
     });
