@@ -11,7 +11,17 @@ class Pokedex {
     }
 
     catch(pokemonName) {
-        return fetchPokemon(pokemonName).then((response) => {this.pokemon.push(response)})
+        return fetchPokemon(pokemonName)
+        .then((data) => {
+            const pokemon = {
+                name: data.name,
+                id: data.id,
+                height: data.height,
+                weight: data.weight,
+                type: data.types.map((outerType) => outerType.type.name)
+            }
+        this.pokemon.push(pokemon);
+        })
     }
 
     all() {
@@ -22,7 +32,8 @@ class Pokedex {
 // in the node REPL
 
 // const pokedex  = new Pokedex();
-// pokedex.catch('pikachu')
+// pokedex.catch('pikachu').then(() => {console.log(pokedex.all())})
+
 
 // pokedex.catch('jigglypuff').then(() => {console.log(pokedex.all())})
  // Adds jigglypuff to the pokedex
