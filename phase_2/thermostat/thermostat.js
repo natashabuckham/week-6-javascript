@@ -5,7 +5,7 @@ class Thermostat {
     }
 
     getTemperature() {
-        return this.temperature;
+        return {temperature: this.temperature};
     }
 
     up() {
